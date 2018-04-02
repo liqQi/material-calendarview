@@ -1985,7 +1985,7 @@ public class MaterialCalendarView extends ViewGroup {
         final CalendarPagerAdapter<?> newAdapter;
         switch (calendarMode) {
             case MONTHS:
-                newAdapter = new MonthPagerAdapter(this);
+                newAdapter = createMonthCalendarPagerAdapter();
                 break;
             case WEEKS:
                 newAdapter = new WeekPagerAdapter(this);
@@ -2015,5 +2015,10 @@ public class MaterialCalendarView extends ViewGroup {
 
         invalidateDecorators();
         updateUi();
+    }
+
+    @NonNull
+    protected CalendarPagerAdapter<?> createMonthCalendarPagerAdapter() {
+        return new MonthPagerAdapter(this);
     }
 }
